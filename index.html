@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이지은 | Artist Profile Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <!-- 배경 데코 요소 -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <main class="card-container">
+    <div class="card" id="card">
+      <div class="card-inner">
+        <!-- 상단 뱃지 & 액션 -->
+        <div class="card-header">
+          <span class="badge"><i class="fa-solid fa-palette"></i> Portfolio Card</span>
+          <button class="theme-toggle" id="themeToggle" title="배경 색상 테마 변경" aria-label="테마 변경">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </button>
+        </div>
+
+        <!-- 캐릭터 일러스트 아바타 -->
+        <div class="avatar-wrapper">
+          <div class="avatar-glow"></div>
+          <div class="character-avatar" id="avatar">
+            <!-- 직접 디자인한 아티스트 이지은 SVG 캐릭터 -->
+            <svg viewBox="0 0 200 200" class="character-svg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF3E8" />
+                  <stop offset="100%" stop-color="#FCDDC7" />
+                </linearGradient>
+                <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4A3428" />
+                  <stop offset="100%" stop-color="#2B1D16" />
+                </linearGradient>
+                <linearGradient id="beretGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF758C" />
+                  <stop offset="100%" stop-color="#FF5277" />
+                </linearGradient>
+                <linearGradient id="clothesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6C5CE7" />
+                  <stop offset="100%" stop-color="#A29BFE" />
+                </linearGradient>
+                <filter id="blushFilter" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" />
+                </filter>
+              </defs>
+
+              <!-- 뒷머리 -->
+              <path d="M 50 100 Q 35 150 55 175 Q 80 185 100 185 Q 120 185 145 175 Q 165 150 150 100 Z" fill="#2B1D16"/>
+
+              <!-- 목 & 옷 -->
+              <rect x="88" y="142" width="24" height="25" rx="5" fill="url(#skinGrad)" />
+              <path d="M 60 165 C 75 150 125 150 140 165 L 155 200 L 45 200 Z" fill="url(#clothesGrad)" />
+              <!-- 카라 -->
+              <path d="M 85 165 L 100 178 L 115 165" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" />
+
+              <!-- 얼굴 윤곽 -->
+              <path d="M 62 100 C 62 68 138 68 138 100 C 138 135 125 156 100 156 C 75 156 62 135 62 100 Z" fill="url(#skinGrad)" />
+
+              <!-- 귀 -->
+              <circle cx="61" cy="106" r="8" fill="url(#skinGrad)" />
+              <circle cx="139" cy="106" r="8" fill="url(#skinGrad)" />
+
+              <!-- 앞머리 -->
+              <path d="M 60 92 C 72 70 128 70 140 92 C 135 83 118 78 100 79 C 82 78 65 83 60 92 Z" fill="url(#hairGrad)" />
+              <path d="M 63 94 C 70 115 80 122 83 95" fill="url(#hairGrad)" />
+              <path d="M 137 94 C 130 115 120 122 117 95" fill="url(#hairGrad)" />
+
+              <!-- 눈썹 -->
+              <path d="M 76 96 Q 84 92 91 95" stroke="#4A3428" stroke-width="2.5" stroke-linecap="round" fill="none" />
+              <path d="M 109 95 Q 116 92 124 96" stroke="#4A3428" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+              <!-- 눈 (깜빡임 애니메이션 타겟) -->
+              <g class="eyes">
+                <!-- 왼쪽 눈 -->
+                <ellipse cx="83" cy="106" rx="4.5" ry="5.5" fill="#2B1D16" />
+                <circle cx="81.5" cy="104" r="1.8" fill="#FFFFFF" />
+                <!-- 오른쪽 눈 (윙크 또는 맑은 눈) -->
+                <ellipse cx="117" cy="106" rx="4.5" ry="5.5" fill="#2B1D16" />
+                <circle cx="115.5" cy="104" r="1.8" fill="#FFFFFF" />
+              </g>
+
+              <!-- 볼터치 (아티스트의 화사함) -->
+              <ellipse cx="73" cy="115" rx="8" ry="5" fill="#FF8A9E" opacity="0.6" filter="url(#blushFilter)" />
+              <ellipse cx="127" cy="115" rx="8" ry="5" fill="#FF8A9E" opacity="0.6" filter="url(#blushFilter)" />
+
+              <!-- 아티스트 동글이 안경 -->
+              <g class="glasses">
+                <!-- 안경 알 (좌/우) & 은은한 렌즈 광택 -->
+                <ellipse cx="83" cy="106" rx="13.5" ry="12.5" fill="rgba(255, 255, 255, 0.18)" stroke="#4A3428" stroke-width="2.4" />
+                <ellipse cx="117" cy="106" rx="13.5" ry="12.5" fill="rgba(255, 255, 255, 0.18)" stroke="#4A3428" stroke-width="2.4" />
+                <!-- 렌즈 빛 반사 하이라이트 -->
+                <path d="M 75 100 Q 82 96 89 101" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.75" />
+                <path d="M 109 100 Q 116 96 123 101" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.75" />
+                <!-- 안경 브릿지 (중앙 연결부) -->
+                <path d="M 96.5 105 Q 100 102 103.5 105" stroke="#4A3428" stroke-width="2.4" stroke-linecap="round" fill="none" />
+                <!-- 안경 다리 (귀 방향) -->
+                <path d="M 69.5 105 L 61 104" stroke="#4A3428" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M 130.5 105 L 139 104" stroke="#4A3428" stroke-width="2.2" stroke-linecap="round" />
+              </g>
+
+              <!-- 코 & 입 -->
+              <path d="M 100 108 Q 98 112 100 114" stroke="#E39D88" stroke-width="1.8" stroke-linecap="round" fill="none" />
+              <!-- 살짝 미소 짓는 입 -->
+              <path class="mouth" d="M 94 123 Q 100 131 106 123" stroke="#D35D6E" stroke-width="2.6" stroke-linecap="round" fill="#FFFFFF" />
+
+              <!-- 아티스트의 상징: 귀여운 핑크 베레모 -->
+              <g class="beret">
+                <!-- 베레모 본체 -->
+                <path d="M 50 78 C 45 42 155 35 152 75 C 145 88 56 90 50 78 Z" fill="url(#beretGrad)" />
+                <!-- 베레모 꼭지 꽁지 -->
+                <path d="M 99 44 C 99 35 103 34 105 38" stroke="#D63052" stroke-width="3" stroke-linecap="round" fill="none" />
+              </g>
+
+              <!-- 작은 붓 & 팔레트 아이콘 뱃지 -->
+              <g class="mini-brush" transform="translate(130, 125) rotate(15)">
+                <circle cx="16" cy="16" r="14" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))" />
+                <path d="M 12 21 L 20 13 L 23 16 L 15 24 Z" fill="#D29A67" />
+                <path d="M 10 23 C 8 25 9 27 12 25 Z" fill="#6C5CE7" />
+                <circle cx="18" cy="11" r="2.5" fill="#FF758C" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 프로필 정보 영역 -->
+        <div class="profile-info">
+          <h1 class="name">이지은 <span class="en-name">Lee Ji-eun</span></h1>
+          <div class="role-container">
+            <span class="role-pill">🎨 Artist</span>
+            <span class="sub-role">Illustrator & Visual Storyteller</span>
+          </div>
+          <p class="bio">
+            "빛과 색채로 일상의 따뜻한 온도를 담아내는 아티스트 이지은입니다."
+          </p>
+        </div>
+
+        <!-- 연락처 & 상세 정보 링크 섹션 -->
+        <div class="contact-card">
+          <div class="contact-item" id="emailItem">
+            <div class="contact-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <span class="label">Email Me</span>
+              <a href="mailto:jieun93048877@gmail.com" class="email-link">jieun93048877@gmail.com</a>
+            </div>
+            <button class="copy-btn" id="copyBtn" title="이메일 주소 복사" aria-label="이메일 주소 복사">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 액션 버튼 및 소셜 링크 -->
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-btn behance" title="Behance">
+            <i class="fa-brands fa-behance"></i>
+          </a>
+          <a href="mailto:jieun93048877@gmail.com" class="social-btn mail" title="메일 보내기">
+            <i class="fa-solid fa-paper-plane"></i>
+          </a>
+          <button class="social-btn share" id="shareBtn" title="명함 공유하기">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </div>
+
+        <!-- 하단 푸터 / vCard 다운로드 -->
+        <div class="card-footer">
+          <button class="vcard-btn" id="vcardBtn">
+            <i class="fa-solid fa-address-book"></i> 연락처 저장 (.vcf)
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 토스트 알림 메시지 -->
+  <div class="toast" id="toast">이메일 주소가 복사되었습니다! ✨</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
